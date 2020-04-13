@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6094777208954466152}
   - component: {fileID: 817904919}
   - component: {fileID: 817904916}
+  - component: {fileID: 8879236553884757168}
   - component: {fileID: 6136815401473396228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +91,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -775593967
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1857188551261513057, guid: 1e87ea972ab4d0243b5725e8f1b671e9,
     type: 3}
@@ -123,10 +124,26 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!70 &817904916
 CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094777208954466159}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 72628b9b16366aa4eb90b7e9614fe034, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.033667326, y: -0.08000001}
+  m_Size: {x: 0.5317712, y: 0.84}
+  m_Direction: 0
+--- !u!61 &8879236553884757168
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -138,9 +155,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04, y: -0.08}
-  m_Size: {x: 0.46, y: 0.84}
-  m_Direction: 0
+  m_Offset: {x: -0.04010749, y: -0.44962493}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.37094736, y: 0.10075015}
+  m_EdgeRadius: 0
 --- !u!114 &6136815401473396228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,3 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc121d1c5ff7f24fa65e6ade17239da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runSpeed: 5
+  jumpSpeed: 28
+  climbSpeed: 5
