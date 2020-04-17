@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 28f;
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] Vector2 deathKick = new Vector2(0, 20);
 
     // State
     bool isAlive = true;
@@ -34,10 +35,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isAlive)
+        {
+            return;
+        }
+
         Run();
         ClimbLadder();
         Jump();
         FlipSprite();
+        Die();
     }
 
     private void Run()
@@ -58,7 +65,8 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (CrossPlatformInputManager.GetButtonDown("Jump")) {
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        {
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
         }
@@ -81,6 +89,16 @@ public class Player : MonoBehaviour
 
         bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
+    }
+
+    private void Die()
+    {
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+        {
+            myAnimator.SetTrigger("Dying");
+            myRigidBody.velocity = deathKick;
+            isAlive = false;
+        }
     }
 
     private void FlipSprite()
